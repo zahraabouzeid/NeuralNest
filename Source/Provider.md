@@ -1,0 +1,1 @@
+Ein Provider ist eine Klasse, der Daten aus verschiedenen Datenquellen wie Datenbanken, APIs oder Dateien liest und sie anderen Klassen oder Komponenten zur Verfügung stellt.

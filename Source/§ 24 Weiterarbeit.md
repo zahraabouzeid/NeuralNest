@@ -1,0 +1,1 @@
+Werden Auszubildende im Anschluss an das Berufsausbildungsverhältnis beschäftigt, ohne dass hierüber ausdrücklich etwas vereinbart worden ist, so gilt ein Arbeitsverhältnis auf unbestimmte Zeit als begründet.

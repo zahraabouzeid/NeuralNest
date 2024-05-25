@@ -1,0 +1,3 @@
+(1) Ausbildende haben den Auszubildenden bei Beendigung des Berufsausbildungsverhältnisses ein schriftliches Zeugnis auszustellen. Die elektronische Form ist ausgeschlossen. Haben Ausbildende die Berufsausbildung nicht selbst durchgeführt, so soll auch der Ausbilder oder die Ausbilderin das Zeugnis unterschreiben.
+
+(2) Das Zeugnis muss Angaben enthalten über Art, Dauer und Ziel der Berufsausbildung sowie über die erworbenen beruflichen Fertigkeiten, Kenntnisse und Fähigkeiten der Auszubildenden. Auf Verlangen Auszubildender sind auch Angaben über Verhalten und Leistung aufzunehmen.

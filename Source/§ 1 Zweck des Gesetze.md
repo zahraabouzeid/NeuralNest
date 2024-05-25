@@ -1,0 +1,2 @@
+1. die Sicherheit und den Gesundheitsschutz der Arbeitnehmer in der Bundesrepublik Deutschland und in der ausschließlichen Wirtschaftszone bei der Arbeitszeitgestaltung zu gewährleisten und die Rahmenbedingungen für flexible Arbeitszeiten zu verbessern sowie
+2. den Sonntag und die staatlich anerkannten Feiertage als Tage der Arbeitsruhe und der seelischen Erhebung der Arbeitnehmer zu schützen.

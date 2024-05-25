@@ -1,0 +1,1 @@
+Erkrankt ein Arbeitnehmer während des Urlaubs, so werden die durch ärztliches Zeugnis nachgewiesenen Tage der Arbeitsunfähigkeit auf den Jahresurlaub nicht angerechnet.

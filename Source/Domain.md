@@ -1,0 +1,1 @@
+A directory or folder within the software's codebase that contains modules, components, or files related to a specific functional area or business domain. It typically contains terms, files, or resources directly related to the business processes and operations the software manages.
