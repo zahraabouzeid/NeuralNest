@@ -5,7 +5,7 @@ Aktien sind Wertpapiere, das den Anteil des Aktionärs an einem Unternehmen verb
 Der Aktionär ist der Eigentümer von Aktien.
 
 ## Aktiengesellschaft
-Eine Aktiengesellschaft ist eine Kapitalgesellschaft. Das Kapital wird von Aktionären aufgebracht. Meistens sind AGs große Unternehmen. Die Aktionäre erhalten, sofern Gewinne erzielt wurden, am Jahresende ein Anteil des Gewinns. Im Verlustfall hafen sie in Höhe ihre Aktienanteils. Die Aktionäre sind nicht an der Geschäftsführung beteiligt.
+Eine Aktiengesellschaft ist eine Kapitalgesellschaft. Das Kapital wird von Aktionären aufgebracht. Meistens sind AGs große Unternehmen. Die Aktionäre erhalten, sofern Gewinne erzielt wurden, am Jahresende ein Anteil des Gewinns. Im Verlustfall haften sie in Höhe ihre Aktienanteils. Die Aktionäre sind nicht an der Geschäftsführung beteiligt.
 ## Börse
 - Aktien werden an der Börse gehandelt. 
 - Die Börse ist ein organisierter Marktplatz für Aktien:

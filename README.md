@@ -1,4 +1,4 @@
-Welcome to **Clone My Brain**! Below is a breakdown of the content categories you'll find within:
+Welcome to **Neural Nest**! Below is a breakdown of the content categories you'll find within:
 
 ## Categories
 - [Books](Books.md)
