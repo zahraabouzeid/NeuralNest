@@ -131,3 +131,51 @@ Exchange traded Fund sind Nachbildungen von verschiedenen erfolgreichen Indizes.
 **Generationsvertrag:** Die arbeitende Bevölkerung finanziert mit ihrem Beiträgen den Lebensunterhalt der Rentner in der Erwartung, dass die kommende Generation dann später für sie aufkommt. 
 
 **Demographischer Wandlungsprozess**
+Der Generationenvertrag ist gestört, weil die Zahl der Arbeitnehmer rückläufig ist und die Zahl der Rentner zunimmt.
+
+Die **Gründe** dafür sind:
+- sinkende Geburtenrate bzw. weniger Beitragszahler
+- höhere Lebenserwartung aufgrund besserer medizinischer Versorgung, das heißt mehrere Rentner
+- Verringerung der Lebensarbeitszeit aufgrund der Verlängerung der Ausbildunsdauer
+- zunehmendes Gesundheitsbewusstsein
+
+|Anlageklasse|Vorteile|Nachteile|
+|---|---|---|
+|Immobilien|- Stabile Wertentwicklung über lange Zeiträume|- Hoher anfänglicher Kapitaleinsatz erforderlich|
+||- Einnahmen durch Mieteinnahmen möglich|- Illiquide: Schwierig, schnell Kapital zu liquidieren|
+|Gold|- Historisch gesehen werterhaltende Eigenschaften|- Keine Erträge in Form von Zinsen oder Dividenden|
+||- Als Absicherung gegen Inflation genutzt|- Volatilität kann kurzfristig hoch sein|
+|Anleihen|- Stabile, vorhersehbare Erträge|- Niedrige Renditen im aktuellen Niedrigzinsumfeld|
+||- Kapitalschutz (bei Staatsanleihen)|- Inflation kann Renditen mindern|
+|Kryptowährungen|- Potenziell hohe Renditen über kurze Zeiträume|- Extrem hohe Volatilität und Risiko|
+||- Diversifikation des Portfolios|- Regulatorisches Risiko|
+|Fonds|- Professionelles Management und Diversifikation|- Managementgebühren können Renditen mindern|
+||- Zugang zu verschiedenen Anlageklassen und Märkten|- Renditen nicht garantiert|
+|ETFs|- Breite Diversifikation über einen Index|- Handelskosten und Trackingfehler|
+||- Niedrige Kosten im Vergleich zu aktiv verwalteten Fonds|- Renditen können dem Index hinterherhinken|
+
+## Glossar
+
+| Begriff              | Definition                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **EZB**              | Europäische Zentralbank. Die EZB ist eine der zentralen Institutionen der Europäischen Union und die Zentralbank der Euro-Währungsgemeinschaft. Sie legt den Leitzins und die Richtlinien der Geldpolitik fest. Für den Aktienmarkt bedeuten ein höherer Leitzins meist sinkende Aktienkurse, da dem Markt so Finanzmittel (Liquidität) entzogen werden.                                                                                                                |
+| **FinTech**          | FinTech ist die Abkürzung für den englischen Begriff „Financial Technology“, also Finanztechnologie. FinTech ist vor allem im digitalen Bereich seit einiger Zeit in Mode. Auch die Neobroker gehören zu den FinTechs.                                                                                                                                                                                                                                                  |
+| **Inflation**        | andauernder Prozess der Geldentwertung, der durch Preiserhöhungen sichtbar wird. Wird in Prozent angegeben, angestrebt werden 2 %.                                                                                                                                                                                                                                                                                                                                      |
+| **Greenwashing**     | Der Begriff Greenwashing ist ein Kofferwort aus den englischen Wörtern für „Grün“ und „waschen“. Es soll an den Begriff der Geldwäsche erinnern und meint den Versuch von Unternehmen, sich und ihre Produkte „grüner“ zu präsentieren als sie sind, z. B. durch erfundene Öko-Siegel oder irreführende Angaben zum Klimaschutz. Das Motiv hinter Greenwashing ist meist die Profitmaximierung, da Kundinnen und Kunden zunehmend umwelt- und klimabewusster einkaufen. |
+| **Neobroker**        | Das Wort Neobroker ist eine Zusammensetzung aus den Wörtern „neo“ für neu und „Broker“. Ein Broker ist eine Person, die im Auftrag von Anlegerinnen und Anlegern Handelsobjekte wie Aktien kauft und verkauft und dafür überwiegend Börsen nutzt. Ein Broker arbeitet meist für eine Bank und erhält üblicherweise eine Provision für seine Dienste. Ein Neobroker ist dagegen eine App auf dem Smartphone, die sich durch leichte Bedienung auszeichnet.               |
+| **Rendite**          | Ertrag, der mit Kapital erzielt wird (meist pro Jahr). Die Rendite beschreibt, in welchem Maß eine Anlage finanziellen Gewinn erbracht hat.                                                                                                                                                                                                                                                                                                                             |
+| **Dividende**        | Gewinnausschüttung eines börsennotierten Unternehmens. Wird pro Aktie festgelegt. Jede Person, die Aktien des betreffenden Unternehmens besitzt, enthält pro Aktie den festgelegten Dividendenbetrag.                                                                                                                                                                                                                                                                   |
+| **Thesaurierung**    | Diejenigen Gewinne, die eine Firma nicht ausschüttet, sondern reinvestiert, werden thesauriert (griech. thesauros = Schatzhaus). Dasselbe gilt für Fonds: Wer in einen thesaurierenden Fonds investiert, bekommt die Gewinne nicht als Dividende ausgezahlt, sondern diese werden automatisch auch in denselben Fonds investiert.                                                                                                                                       |
+| **Zinseszinseffekt** | Effekt, bei dem auf die Zinsen aus dem Vorjahr auch wieder Zinsen gezahlt werden. Beispiel: Jemand legt 100 € in Aktien an. Diese gewinnen im ersten Jahr 10 % an Wert und sind also um 10 € wertvoller. Gewinnen die Aktien im darauffolgenden Jahr erneut 10 % an Wert, sind es aber aufgrund des Zinses auf den Zins nun 11 € mehr.                                                                                                                                  |
+## Das schwedische Modell
+Im schwedischen System werden Rentenbeiträge sowohl für die aktuelle Auszahlung als auch für die Kapitalanlage verwendet. Der staatliche Rentenfonds investiert einen Teil der Beiträge an der Börse, um später Renten auszuzahlen.
+    
+**Funktionsweise des Konzepts**: 2,5 % des Bruttolohnes sollen statt in die Umlagefinanzierung in einen staatlichen Rentenfonds fließen, der das Geld an der Börse anlegt. Der entstehende Kapitalstock soll Rendite erwirtschaften und die Renten ergänzen.
+    
+**Renditeerwartungen**: Die CDU-Abgeordneten verweisen auf die Renditen ähnlicher Staatsfonds in Norwegen und Schweden, die zwischen 1998 und 2018 im Bereich von 5,5 % bis 6,1 % lagen, trotz zwischenzeitlicher Wirtschaftskrisen.
+    
+**Struktur und Schutz des Fonds**: Der vorgeschlagene Fonds soll breit gestreut investieren und keiner einzelnen Regierung unterstellt sein, um politischem Zugriff vorzubeugen. Die Bundesbank soll die Aufsicht über den Fonds führen.
+    
+**Globaler Anlageansatz**: Der Rentenfonds soll global investieren, ähnlich dem norwegischen Fonds, der in über 9.000 Unternehmen in 74 Ländern investiert war. Dies ermöglicht Deutschland, am wirtschaftlichen Erfolg anderer Länder teilzuhaben.
+    
+**Mackenroth-Theorie**: Die Mackenroth-Theorie besagt, dass Rentenausgaben immer aus dem laufenden Volkseinkommen finanziert werden müssen. Beim Kapitaldeckungsverfahren ist es wichtig, dass die Summe aller Renten nicht größer ist als die Summe der Beiträge und Renditen, um den Rentenkapitalstock zu erhalten. Internationale Investitionen in Aktien sollen helfen, höhere Renditen zu erzielen und das Risiko zu streuen.
