@@ -1,37 +1,62 @@
 ## Fächerbeziehungen
-Fächerbeziehungen sind Kombinationen von Beziehungen, die zu einem kartesischen Produkt führen. Bei der Nutzung von Aggregatfunktionen wie  `SUM` und `COUNT` ist oft ein Zwischenergebnis mit einem Subquery erforderlich.
+Fächerbeziehungen sind Kombinationen von Beziehungen, die zu einem kartesischen Produkt führen. Ein kartesisches Produkt ist eine mathematische Operation, die alle möglichen Kombinationen von Elementen aus zwei oder mehr Mengen erzeugt.  `AVG` führt zu keinem kartesischen Produkt. Nur `COUNT` und `SUM` führen dazu.
 
-**Kartesischem Produkt**
+| Nr  | Name   | Gruppe |
+| --- | ------ | ------ |
+| 1   | Sally  | A      |
+| 2   | Ina    | A      |
+| 3   | Cora   | A      |
+| 4   | Rita   | A      |
+| 5   | Nelly  | A      |
+| 6   | Bertha | A      |
+| 7   | Anna   | A      |
+
+| Nr  | Name | Gruppe |
+| --- | ---- | ------ |
+| 1   | Joe  | A      |
+| 2   | Tom  | A      |
+| 3   | Sam  | B      |
+| 4   | Ali  | B      |
+| 5   | John | B      |
+| 6   | Nick | B      |
+Die folgende Subquery ergibt ein kartesiches Produkt: 
 ```sql
-SELECT Gruppe, COUNT(Frau.FNr), COUNT(Mann.MNr)
-FROM Frau 
-INNER JOIN Gruppe ON Frau.Gruppe = GruppenID
-INNER JOIN Mann ON Mann.Gruppe = GruppenID
-GROUP BY GruppenID;
+SELECT *
+FROM Frauen
+INNER JOIN Männer ON Frauen.Gruppe = Männer.Gruppe;
 ```
 
+Das Ergebnis sieht wie folgendes aus:
 
-**Aggregatfunktion in Subquery**
+| Nr  | Name  | Gruppe | Nr  | Gruppe |
+| --- | ----- | ------ | --- | ------ |
+| 1   | Sally | A      | 1   | Joe    |
+| 1   | Sally | A      | 2   | Tom    |
+| 2   | Ina   | A      | 1   | Joe    |
+| 2   | Ina   | A      | 2   | Tom    |
+| 3   | Cora  | A      | 1   | Joe    |
+| 3   | Cora  | A      | 2   | Tom    |
+| 4   | Rita  | A      | 1   | Joe    |
+| 4   | Rita  | A      | 2   | Tom    |
+Nach der Aggregation ist der Count(\*)  der Frauen und Männer die zur Gruppe A gehören 8 jeweils, anstatt 4 Frauen und 2 Männer. 
+
+#### Lösung mit einer Subquery
 
 ```sql
-SELECT Gruppe, COUNT(Frau.FNr) AS FrauenAnzahl, MännerAnzahl
-FROM Frau 
-INNER JOIN 
-(        
-	SELECT Gruppe AS MannGruppe, COUNT(Mann.MNr) AS MännerAnzahl
-	FROM Mann
+SELECT Gruppe, COUNT(Frauen.Nr) AS FrauenAnzahl, MännerAnzahl
+FROM Frauen
+INNER JOIN (        
+	SELECT Gruppe AS MännerGruppe, COUNT(Männer.Nr) AS MännerAnzahl
+	FROM Männer
 	GROUP BY Gruppe
-) AS qryMann ON Frau.Gruppe = qryMann.MGruppe -- die qry wird zu einem Tabelle
+) AS qryMänner ON Frauen.Gruppe = qryMänner.MännerGruppe
 GROUP BY Gruppe;
 ```
 
-> [!INFO]
-> `AVG` führt zu keinem kartesischen Produkt.
-
-## Kombination von Aggregation und Nicht Aggregation
-Eine Subquery wird auch benötigt, wenn wir eine Wert mit seinem aggregierten Wert vergleichen.
-
-**Ohne Gruppierung**
+Das Ergebnis des Subquery wird dann wie eine Tabelle behandelt und mit den anderen Tabellen in der FROM Klausel verknüpft.
+## Aggregation und Nicht Aggregation
+Eine Subquery wird auch benötigt, wenn wir einen Wert mit seinem aggregierten Wert vergleichen.
+#### Ohne Gruppierung
 
 ```sql
 SELECT SchülerNr, Note, Durschnittsnote
@@ -42,8 +67,7 @@ FROM Arbeitsnoten,
 ) AS qryArbeitsnoten -- wie Tabellenname
 WHERE Note < Durschnittsnote;
 ```
-
-**Mit Gruppierung**
+#### Mit Gruppierung
 ```sql
 SELECT SchülerNr, Arbeitsnoten.ArbeitsNr, Note, Durchschnitt  
 FROM Arbeitsnoten 
@@ -71,71 +95,48 @@ INNER JOIN
 GROUP BY qryArbeitsnoten.Lehrer;
 ```
 
-## WHERE Clause
+## Subquery in WHERE 
 
-**Vergleichen**
+#### Vergleich mit Operatoren
+
 ```sql
-SELECT Datenfeld1, Datenfeld2
-FROM tabelle
-WHERE Datenfeld1 < (SELECT AVG(Datenfeld1) FROM tabelle);
+SELECT Attributname, Attributname
+FROM Tabellenname
+WHERE Attributname < (
+	SELECT AVG(Attributname)
+	FROM Tabellenname
+);
 ```
 
-**IN**
+#### Vergleich mit IN
 ```sql
-SELECT Datenfeld1, Datenfeld2
-FROM tabelle
-WHERE Datenfeld1 IN (SELECT datenfeld FROM andere_tabelle);
-```
-
-**NOT IN**
-
-```sql
-SELECT KdNr, KdName
-FROM Kunde
-WHERE KdNr NOT IN 
+SELECT Attributname
+FROM Tabellenname
+WHERE Attributname [NOT] IN 
 (
-	SELECT KdNr
-	FROM Kunde, KdAuftrage
-	WHERE KdNr = Kunde AND YEAR(Auftragsdatum) = 2005
+	SELECT Attributname
+	FROM AndereTabelle
+	WHERE Bedingung
 )
 ```
-
-> [!warning]
-> Primärschlüssel als einziges Feld im Subquery!
 
 ## UNION
 Zeilen mit gleichem Inhalt werden standardmäßig zu einer Zeile komprimiert.
 ```sql
 SELECT Gruppe, Vorname AS Name, Geburtsdatum AS Geburtsdatum -- Diese Spalten ergeben die Spaltenüberschriften
-FROM frau
+FROM Frauen
 UNION
 SELECT Gruppe, Vorname, Geburtsdatum
-FROM mann;
+FROM Männer
 ```
 
 
 ## Correlated Subqueries
+Correlated Subqueries verknüpfen mit dem äußeren Select. Sie werden für **jede Zeile** neu ausgeführt. Dadurch sind sie sehr ineffizient.
 
-```sql
-SELECT tabelle.feld, (SELECT andere_tabelle.feld FROM andere_tabelle JOIN tabelle ON tabelle.key = andere_tabelle.key)
-FROM tabelle;
-```
 
-> [!danger]
-> Correlated Subqueries verknüpfen mit dem äußeren Select. Sie werden für **jede Zeile** neu ausgeführt. Dadurch sind sie sehr ineffizient.
 
-## Kontrolle
 
-- Man benötigt **nicht** jedes Mal einen Subquery, wenn man einen berechneten Wert vergleichen möchte.
-- **Nicht** jedes im Subquery verwendete Feld benötigt einen Alias, wenn es außerhalb verwendet werden soll.
-- Man benötigt einen Subquery wenn man folgende Beziehungskonstellation hat: T **m-1** T **1-m** T.
-- Der Alias **des Subquerys** wird nicht wie der Name eines Attributs verwendet.
-- Um einen Subquery, der sich in der WHERE-Klausel befindet, zu verwenden, benötigt dieser **keinen** Alias-Namen.
-- Für Queries mit aggregierten Werten benötigt man **nicht** immer einen Subquery.
-- Man benötigt bei Vergleichen mit Berechnungen einen Subquery, **wenn** man den **aggregierten Wert** eines Datenfeldes mit seinen nicht-aggregierten Werten vergleichen möchte.
-- Im Subquery  - egal wo verwendet - sollte man lieber großzügig auch mal **nicht** zu viele Felder selektieren.
-- Um einen Subquery, der sich in der FROM-Klausel befindet, zu verwenden, benötigt dieser einen Alias-Namen.
-- Man erhält **kein** kartesisches Produkt bei folgender Beziehungskonstellation:  T **1-mc** T **mc-1** T.
-- Ein im Subquery berechnetes Feld benötigt einen Alias, um im äußeren Select verwendet werden zu können – es sei denn der Query steht in der WHERE-Klausel.
-- In der Regel benötigt man ein Schlüsselfeld im Subquery, um diesen mit dem äußeren Select zu verbinden.
-- Der Alias **eines aggregierten Wertes im Subquery** wird wie der Name eines Attributs verwendet.
+>[!tips]
+>- Nicht alle Felder, die im Subquery verwendet werden, benötigen außerhalb einen Alias. Wenn ein Feld im Subquery berechnet wird und dann außerhalb verwendet werden soll, ist ein Alias erforderlich, damit es im äußeren Select verwendet werden kann. Ebenso braucht ein Subquery, der sich in der FROM-Klausel befindet, einen Alias-Namen, um verwendet zu werden.
+>- Ein Subquery wird benötigt, wenn die Beziehungskonstellation T **m-1** T **1-m** T vorliegt. Jedoch führt die Beziehungskonstellation T 1-mc T mc-1 T nicht zu einem kartesischen Produkt.

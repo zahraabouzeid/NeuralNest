@@ -1,136 +1,156 @@
 ## Datenbank Management System
 
-Ein Datenbank Management System (DBMS) umfasst verschiedene Funktionen zur Verwaltung von Datenbanken, darunter:
-
-- Datenspeicherung und Implementation des Modells
-- Datenverwaltung und Manipulation
-- Datenzugriff
-- Gewährleistung der Datensicherheit
+Ein Datenbank Management System (DBMS) ist eine Systemsoftware zur Erstellung und Verwaltung von Datenbanken. Es umfasst verschiedene Funktionen zur Verwaltung von Datenbanken, darunter Datenspeicherung und Implementation des Modells, Datenverwaltung und Manipulation, Datenzugriff und Gewährleistung der Datensicherheit
 
 ## Bestandteile
-
 Ein DBMS besteht aus mehreren Bestandteilen, darunter:
 
-- **Data Manipulation Language (DML)**: Zum Löschen und Anfügen von Datensätzen.
-- **Data Query Language (DQL)**: Für die Suche gespeicherter Informationen.
-- **Data Definition Language (DDL)**: Beschreibt die logische Struktur und Konzeption (Datenbankaufbau).
-- **Data Control Language (DCL)**: Zur Verwaltung von Zugriffsrechten auf Tabellen.
-- **Transaction Control Language (TCL)**: Für Sicherungsmaßnahmen bei der Datenübertragung.
+ **Data Definition Language (DDL)**
+ Definition der Datenbankstruktur oder des Datenbankschemas, beschreibt die logische Struktur und Konzeption (Datenbankaufbau).
 
-## Struktur
+**Data Query Language (DQL)**
+Daten aus dem Datenbank abrufen
 
-**Datenbank erstellen**
+**Data Manipulation Language (DML)**
+Datenbankinstanz durch Einfügen, Ändern und Löschen Daten ändern
+
+**Data Control Language (DCL)**
+Verwaltung von Zugriffsrechten und Berechtigungen auf Tabellen
+
+**Transaction Control Language (TCL)**
+Sicherungsmaßnahmen bei der Datenübertragung
+
+## Datentypen
+
+| Typ           | Beschreibung                                                                 |
+| ------------- | ---------------------------------------------------------------------------- |
+| INT           | Ganze Zahlen (32 Bit)                                                        |
+| DECIMAL(p, s) | Festkommatyp (p Dezimalstellen insgesamt, s Dezimalstellen hinter dem Komma) |
+| FLOAT         | Gleitkommatyp (32 Bit)                                                       |
+| DOUBLE        | GLeitkommatyp (64 Bit)                                                       |
+| BOOLEAN       | False, True (0 oder 1)                                                       |
+| DATE          | Datum JJJJ-MM-DD                                                             |
+| DATETIME      | Datum und Uhrzeit                                                            |
+| TIMESTAMP     | Datum und Uhrzeit in Milli-Sekunden                                          |
+| CHAR(s)       | Zeichenfolge mit Länge s                                                     |
+| VARCHAR(s)    | Zeichenfolge mit Maximal-Länge s, ggf. auch kürzer                           |
+| Text          | Sehr große Texte                                                             |
+
+## Datenbank verwalten
+
+#### Datenbank erstellen
 
 ```sql
-CREATE DATABASE datenbank;
+CREATE DATABASE [IF NOT EXISTS] Datenbankname;
 ```
-
-**Datenbanken anzeigen**
+#### Datenbanken auflisten
 
 ```sql
 SHOW DATABASES;
 ```
-
-**Datenbank löschen**
-
-```sql
-DROP DATABASE datenbank;
-```
-
-**Datenbank verwenden**
+#### Datenbank löschen
 
 ```sql
-USE datenbank;
+DROP DATABASE Datenbankname;
+```
+#### Datenbank auswählen
+
+```sql
+USE Datenbankname;
 ```
 
-**Tabellen anzeigen**
+## Tabellen verwalten
 
+#### Tabellen auflisten
 ```sql
 SHOW TABLES;
 ```
-
-**Spalten einer Tabelle anzeigen**
-
+#### Tabellenaufbau anzeigen
 ```sql
-SHOW COLUMNS FROM tabelle;
+DESC Tabellenname;
 ```
 
-**Tabelle erstellen**
-
+#### Tabelle anlegen
 ```sql
-CREATE TABLE tabelle (
-    ID INT AUTO_INCREMENT,
-    Wert CHAR(50) NOT NULL,
-    FK INT NOT NULL,
-    PRIMARY KEY (ID),
-    FOREIGN KEY (FK)
-        REFERENCES andere_tabelle(PK)
-        ON DELETE CASCADE
-        ON UPDATE CASCADE,
-    UNIQUE INDEX (FK),
-    INDEX(Wert)
+CREATE TABLE Tabellenname (
+	Attributname Datentyp [AUTO_INCREMENT] [NOT NULL] [DEFAULT WERT],
+	Attributname Datentyp,
+	Attributname Datentyp,
+	PRIMARY KEY (Attributname),
+	FOREIGN KEY (Attributname) REFERENCES ReferenzierteTabelle(Attributname) [ON UPDATE CASCADE] [ON DELETE CASCADE],
+	UNIQUE INDEX (Attributname),
+    INDEX(Attributname)
 );
 ```
 
-**Tabelle löschen**
-
+#### Tabelle löschen
 ```sql
-DROP TABLE tabelle;
+DROP TABLE Tabellenname;
 ```
 
-**Spalte zur Tabelle hinzufügen**
+
+## Bestehende Tabellen ändern
+#### Spalten auflisten
 
 ```sql
-ALTER TABLE tabelle
-ADD spalte DATATYPE;
+SHOW COLUMNS FROM Tabellenname;
+```
+#### Spalte hinzufügen
+
+```sql
+ALTER TABLE Tabellenname ADD Attributname Datentyp;
+```
+#### Spalte löschen
+
+```sql
+ALTER TABLE Tabellenname DROP Attributname;
+```
+#### Spalte ändern
+
+```sql
+ALTER TABLE Tabellenname MODIFY Attributname Datentyp;
+```
+#### Primärschlüssel entfernen
+
+```sql
+ALTER TABLE Tabellenname DROP PRIMARY KEY;
 ```
 
-**Spalte aus Tabelle entfernen**
+#### Primärschlüssel hinzufügen
 
 ```sql
-ALTER TABLE tabelle
-DROP Wert;
+ALTER TABLE Tabellenname ADD PRIMARY KEY (Attributename);
 ```
 
-**Spaltendatentyp ändern**
-
+## Index
+Indexe werden in Relationalen Datenbanken dazu benutzt, Daten schneller abfragen zu können.
+Mit dem Keyword `UNIQUE` können doppelte Werte ausgeschlossen werden.
+#### Index erstellen
 ```sql
-ALTER TABLE tabelle
-MODIFY Wert DATATYPE;
+CREATE [UNIQUE] INDEX Indexname ON Tabellenname(Attributname);
 ```
 
-**Primärschlüssel entfernen**
-
+#### Index löschen
 ```sql
-ALTER TABLE tabelle
-DROP PRIMARY KEY;
+DROP INDEX Indexname ON Tabellenname;
 ```
 
-**Primärschlüssel hinzufügen**
+## Daten bearbeiten
 
+#### Daten einfügen
 ```sql
-ALTER TABLE tabelle
-ADD PRIMARY KEY (PK);
+INSERT INRO Tabellenname (Attributname, Attributname, Attributname)
+VALUES (Wert, Wert, Wert)
+```
+#### Daten löschen
+```sql
+DELETE FROM Tabellenname;
 ```
 
-**Index erstellen**
+#### Daten aktualisieren
 
 ```sql
-CREATE [UNIQUE] INDEX i
-ON tabelle(spalte);
-```
-
-**Index löschen**
-
-```sql
-DROP INDEX i
-ON tabelle;
-```
-
-**Daten einfügen**
-
-```sql
-INSERT INTO tabelle (ID, Wert) 
-VALUES (12, 'John'),
-       (13, 'Alex');
+UPDATE Tabellenname
+SET Datenfeld = NeuerWert,
+	Datenfeld = NeuerWert;
 ```

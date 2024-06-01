@@ -1,13 +1,17 @@
-![](Outer%20Join.png)
-- `INNER JOIN` beinhaltetet nur Ergebnisse, die Datensätze in beiden Tabellen haben.
-- `LEFT JOIN` beinhaltet die Schnittmenge und Datensätze der linken Tabelle.
-- `RIGHT JOIN` beinhaltet die Schnittmenge und Datensätze der rechten Tabelle.
-- `FULL JOIN` enthält die Vereinigungsmenge und ist bei referentieller Integrität irrelevant.
-- `IFNULL()` ersetzt `NULL` mit dem ausgewählten Wert, ist aber irrelevant bei `COUNT`
-- `COALESCE()` wird der Wert erste genommen, der nicht `NULL` ist. Gibt `COUNT(\*)` `NULL` zurück, ist 0 der erste Wert, der nicht `NULL` ist. Wenn alle Werte `NULL` sind, ist das Ergebnis `NULL`
-## Kontrolle
+Einen `OUTER JOIN` benötigt man, wenn es in der Parent Tabelle Datensätze gibt, die keine Child Datensätze in der verbundenen Tabelle hat und auch die Parent Datensätze ohne Child Datensätze für die Vollständigkeit des Queries benötigt werden.
 
-- `FULL OUTER JOIN` sind irrelevant, wenn die Datenbank referentielle Integrität unterstützt.
-- Wenn wir bei einer `LEFT JOIN` Abfrage mit zwei Tabellen die beiden Tabellen vertauschen und stattdessen einen RIGHT JOIN verwenden, erhalten wir dieselben Zeilen in der Ergebnismenge.
-- Bei `COUNT` und `IFNULL` bzw. `COALESCE` benötigt man bei der Verwendung von mehr als einer Tabelle sehr oft einen `OUTER JOIN`, um ein vollständiges richtiges Ergebnis zu erhalten.
-- Einen `OUTER JOIN` benötigt man, wenn es in der parent-Tabelle Datensätze gibt, die keine child-Datensätze in der verbundenen Tabelle hat und auch die  parent-Datensätze ohne child-Datensätze für die Vollständigkeit des Queries benötigt werden.
+![500](Outer%20Join.png)
+
+### Inner Join 
+Ein Inner Join gibt die Schnittmenge der Tabellen zurück. Wenn zum Beispiel eine ID nur in einer Tabelle vorkommt wird sie nicht angezeigt.
+
+### Left Join
+Ein Left Join gibt alle Daten von der linken Tabelle zurück und zusätzlich die passende Schnittmenge der zweiten.
+
+### Right Join 
+Gibt alle Daten der rechten Tabelle zurück und zusätzlich die Schnittmenge der linken.
+
+### Full Outer Join / Full Join
+Gibt alle Daten aus beiden Tabellen zurück. Sie sind irrelevant, wenn die Datenbank referentielle Integrität unterstützt.
+
+
