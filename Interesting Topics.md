@@ -14,6 +14,7 @@
 - [Try Galaxy on your iPhone](https://www.samsung.com/uk/try-galaxy-on-your-phone/)
 - Webflow
 - [Kontaktlinsen](https://www.lens.me/)
+- [Genrate AI Photos](https://perchance.org/)
 
 ## Tips & Tricks
 - **Win + Ctrl + Alt + Shift + L** launches LinkedIn on  Windows 11.
