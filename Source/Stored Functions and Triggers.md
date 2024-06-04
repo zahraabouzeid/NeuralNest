@@ -1,25 +1,25 @@
 ## Stored Functions
 Eine **Stored Function** ist eine Menge von SQL Anweisungen, die auf dem Server gespeichert werden, zum Zweck der Wiederholbarkeit der gleichen Anweisungsfolgen und des wenigen Datenaustauschs zwischen dem Client und dem Server. Jedoch können **Stored Functions** den Datenbankserver belasten.
 
-**Wie ändert man der Delimiter?**
+#### Delimiter setzen
 ```sql
 DELIMITER //
 ```
 
-**Wie schreibe ich eine Funktion?**
+#### Funktion erstellen
 ```sql
 DELIMITER //
-CREATE FUNCTION myfunc(param1 type) RETURNS type
+CREATE FUNCTION Funktion(Parameter Datentyp) RETURNS Datentyp
 BEGIN
-	RETURN ausdruck
+	RETURN Ausdruck
 END;
 //
-DELIMITER ; -- delimiter wieder auf Semcolon zurücksetzen
+DELIMITER ;
 ```
 
-**Eine Funktion aufrufen**
+#### Funktion aufrufen
 ```sql
-SELECT myfunc(param1)
+SELECT Funktion(Parameterwert)
 ```
 
 ## Trigger
@@ -30,36 +30,37 @@ Die auslösende Ereignisse sind:
 - `INSERT`
 - `DELETE`
 
-**Syntax**
+#### Trigger erstellen
 ```sql
 DELIMITER //
-CREATE TRIGGER name zeitpunkt event
-ON tbl_name
+CREATE TRIGGER Triggername [BEFORE | AFTER] [INSERT | UPDATE | DELETE]
+ON Tabellenname
 FOR EACH ROW
 BEGIN
-	IF bedingung THEN
+	IF Bedingung THEN
 	BEGIN
-		trigger_statement;
+		Statement;
 	END IF;
 END;
 //
 DELIMITER
 ```
 
-**Beispiele**
+#### Insert Trigger
 ```sql
-CREATE TRIGGER insert_sum BEFORE INSERT
-ON account
+CREATE TRIGGER Inserttrigger BEFORE INSERT
+ON Tabellenname
 FOR EACH ROW
-	SET @sum = @sum + NEW.amount;
+	SET @Datenfeld = @Datenfeld + NEW.Datenfeld;
 ```
 
+#### Update Trigger
 ```sql
-CREATE TRIGGER update_preise AFTER UPDATE
-ON Artikel
+CREATE TRIGGER Updatetrigger AFTER UPDATE
+ON Tabellenname
 FOR EACH ROW
-	INSERT INTO altePreise
-	SET altePreise.ArtNr = OLD.ArtNr
-		altePreise.Verkaufspreis = OLD.Verkaufspreis;
+	INSERT INTO Sicherungstabelle
+	SET Sicherungstabelle.Datenfeld = OLD.Datenfeld,
+		Sicherungstabelle.Datenfeld = OLD.Datenfeld;
 			
 ```

@@ -1,56 +1,66 @@
-**Alle Benutzer anzeigen**
+## Benutzereinstellungen
+#### Benutzer auflisten
 ```sql
-SELECT *
-FROM mysql.user;
+SELECT * FROM mysql.user;
 ```
-**Benutzer erstellen**
+#### Benutzer erstellen
 ```sql
-CREATE USER IF NOT EXISTS 'benutzer'@'localhost'
-IDENTIFIED BY 'passwort';
-```
-
-**Passwort für sich selbst setzen**
-```sql
-SET PASSWORD = PASSWORD('passwort')
+CREATE USER IF NOT EXISTS 'Benutzer'@'localhost'
+IDENTIFIED BY 'Passwort';
 ```
 
-**Passwort für sich selbst setzen**
+#### Benutzerpasswort setzen
+```sql
+SET PASSWORD = PASSWORD('Passwort')
+```
+
+#### Passwort für einen bestimmten Benutzer setzen
 ```sql
 SET PASSWORD 
-FOR 'benutzer'@'localhost'v= PASSWORD('passwort');
+FOR 'Benutzer'@'localhost' = PASSWORD('Passwort');
 ```
 
-**Rechte vergeben**
+## Benutzerrechte
+
+| Befehl         | Beschreibung                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------ |
+| ALL PRIVILEGES | Ein Wildcard für alle Rechte auf das gewählte Datenbankobjekt und mit einem `*.*` auf alle Datenbanken |
+| CREATE         | Erlaubt einem Benutzer, neue Datenbanken und Tabellen zu erstellen                                     |
+| DROP           | Erlaubt einem Benutzer, Datenbanken und Tabellen zu löschen                                            |
+| DELETE         | Erlaubt einem Benutzer, einzelne Zeilen in einer Tabelle zu löschen                                    |
+| INSERT         | Erlaubt einem Benutzer, neue Zeilen in eine Tabelle zu schreiben                                       |
+| SELECT         | Leseberechtigungen auf eine Datenbank oder Tabelle                                                     |
+| UPDATE         | Erlaubnis, eine Zeile zu aktualisieren                                                                 |
+| GRANT OPTION   | Erlaubt einem Benutzer, die Rechte anderer Benutzer zu setzen oder zu widerrufen                       |
+
+
+#### Rechte vergeben
 ```sql
-GRANT ALL PRIVILEGES ON meineDB.* TO 'benutzer'@'localhost';
-GRANT INSERT, DELETE ON meineDB.Mitarbeiter TO 'benutzer'@'localhost';
+GRANT ALL PRIVILEGES ON Datenbankname.* TO 'Benutzer'@'localhost';
+GRANT INSERT, DELETE ON Datenbankname.Tabellenname TO 'Benutzer'@'localhost';
 FLUSH PRIVILEGES;
 ```
 
-**Rechte entziehen**
+#### Rechte entziehen
 ```sql
-REVOKE ALL PRIVILEGES ON meineDB . * FROM 'benutzer'@'localhost';
-REVOKE ALL PRIVILEGES ON meineDB . * FROM 'benutzer'@'localhost';
-REVOKE INSERT ON meineDB.Mitarbeiter FROM 'benutzer'@'localhost';
+REVOKE ALL PRIVILEGES ON Datenbankname.* FROM 'Benutzer'@'localhost';
+REVOKE INSERT ON Datenbankname.Tabellenname FROM 'Benutzer'@'localhost';
+FLUSG PRIVILIGES;
 ```
 
-- `ALL PRIVILEGES:` Ein Wildcard für alle Rechte auf das gewählte Datenbankobjekt, mit einem `*.*` auf alle Datenbanken.
-- `CREATE`: Erlaubt einem Benutzer, neue Datenbanken und Tabellen zu erstellen
-- `DROP`: Erlaubt einem Benutzer, Datenbanken und Tabellen zu löschen
-- `DELETE`: Erlaubt einem Benutzer, einzelne Zeilen in einer Tabelle zu löschen
-- `INSERT`: Erlaubt einem Benutzer, neue Zeilen in eine Tabelle zu schreiben
-- `SELECT`: Leseberechtigungen auf eine Datenbank oder Tabelle
-- `UPDATE`: Erlaubnis, eine Zeile zu aktualisieren
-- `GRANT OPTION`: Erlaubt einem Benutzer, die Rechte anderer Benutzer zu setzen oder zu widerrufen
 
-**Roles**
+## Benutzerrollen
+
+#### Rolle erstellen
 ```sql
-CREATE ROLE 'app_developer', 'app_read', 'app_write';
-GRANT ALL ON app_db.* TO 'app_developer';
-GRANT SELECT ON app_db.* TO 'app_read';
-GRANT INSERT, UPDATE, DELETE ON app_db.* TO 'app_write'; 
-GRANT 'app_developer' TO 'dev1'@'localhost';
-GRANT 'app_read' TO 'read_user1'@'localhost', 'read_user2'@'localhost';
-GRANT 'app_read', 'app_write' TO 'rw_user1'@'localhost';
-DROP ROLE 'app_read'
+CREATE ROLE 'Role', 'Role', 'Role';
+GRANT INSERT ON Datenbankname.* TO 'Role';
+```
+#### Role löschen
+```sql
+DROP ROLE 'Role'
+```
+#### Rolle vergeben
+```sql
+GRANT 'Role' TO 'Benutzer'@'localhost';
 ```
