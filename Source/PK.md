@@ -3,3 +3,4 @@
 - [Berufsbildungsgesetz](Berufsbildungsgesetz.md)
 - [Bundesurlaubsgesetz](Bundesurlaubsgesetz.md)
 - [Jungendarbeitsschutzgesetz](Jungendarbeitsschutzgesetz.md)
+- [[Arbeitsvertrag]]
